@@ -2,6 +2,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import http from "../../../http";
 import IRestaurante from "../../../interfaces/IRestaurante";
 
 const FormularioRestaurante = () => {
@@ -23,16 +24,16 @@ const FormularioRestaurante = () => {
     evento.preventDefault();
 
     if (parametros.id) {
-      axios
-        .put(`http://localhost:8000/api/v2/restaurantes/${parametros.id}/`, {
+      http
+        .put(`restaurantes/${parametros.id}/`, {
           nome: nomeRestaurante,
         })
         .then(() => {
           alert("Restaurante atualizado com sucesso");
         });
     } else {
-      axios
-        .post("http://localhost:8000/api/v2/restaurantes/", {
+      http
+        .post("restaurantes/", {
           nome: nomeRestaurante,
         })
         .then(() => {
