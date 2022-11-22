@@ -1,12 +1,7 @@
 import {
-  AppBar,
   Box,
   Button,
-  Container,
-  Link,
-  Paper,
   TextField,
-  Toolbar,
   Typography,
 } from "@mui/material";
 import axios from "axios";
@@ -14,7 +9,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import http from "../../../http";
 import IRestaurante from "../../../interfaces/IRestaurante";
-import { Link as RouterLink} from "react-router-dom";
 
 const FormularioRestaurante = () => {
   const parametros = useParams();
@@ -54,26 +48,7 @@ const FormularioRestaurante = () => {
   };
   return (
     <>
-      <AppBar position="static">
-        <Container maxWidth="xl">
-          <Toolbar>
-            <Typography variant="h6">Administração</Typography>
-            <Box sx={{ display: "flex", flexGrow: 1 }}>
-              <Link component={RouterLink} to="/admin/restaurantes">
-                <Button sx={{ my: 2, color: "white" }}>Restaurantes</Button>
-              </Link>
-              <Link component={RouterLink} to="/admin/restaurantes/novo">
-                <Button sx={{ my: 2, color: "white" }}>Novo Restaurante</Button>
-              </Link>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
 
-      <Box>
-        <Container maxWidth="lg" sx={{ mt: 1 }}>
-          <Paper sx={{ padding: 2 }}>
-            {/*Conteudo da página */}
             <Box
               sx={{
                 display: "flex",
@@ -85,7 +60,11 @@ const FormularioRestaurante = () => {
               <Typography component="h1" variant="h6">
                 Formulário de Restaurantes
               </Typography>
-              <Box component="form" sx={{ width: '100%' }} onSubmit={aoSubmeterForm}>
+              <Box
+                component="form"
+                sx={{ width: "100%" }}
+                onSubmit={aoSubmeterForm}
+              >
                 <TextField
                   value={nomeRestaurante}
                   onChange={(evento) => setNomeRestaurante(evento.target.value)}
@@ -104,9 +83,6 @@ const FormularioRestaurante = () => {
                 </Button>
               </Box>
             </Box>
-          </Paper>
-        </Container>
-      </Box>
     </>
   );
 };
